@@ -26,3 +26,11 @@ Then('I should be presented with a successful contact us submission message', as
   const message = await pageFixture.page.locator('#contact_reply h1').textContent()
   await expect(message).toEqual('Thank You for your Message!')
 });
+
+Then('I should be presented with a unsuccessful contact us message', async () => {
+  await pageFixture.page.waitForSelector("body")
+  const bodyElement = await pageFixture.page.locator("body")
+
+  const bodyText = await bodyElement.textContent()
+  await expect(bodyText).toMatch(/Error: (all fields are required|Invalid email address)/)
+})
