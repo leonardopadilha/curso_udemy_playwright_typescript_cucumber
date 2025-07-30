@@ -34,3 +34,20 @@ Then('I should be presented with a unsuccessful contact us message', async () =>
   const bodyText = await bodyElement.textContent()
   await expect(bodyText).toMatch(/Error: (all fields are required|Invalid email address)/)
 })
+
+// Cucumber Expressions
+When('I type a specific first name {string}', async (firstName: string) => {
+  await pageFixture.page.locator('[placeholder="First Name"]').fill(firstName)
+});
+
+When('I type a specific last name {string}', async (lastName:string) => {
+  await pageFixture.page.locator('[placeholder="Last Name"]').fill(lastName)
+});
+
+When('I enter a specific email address {string}', async (email: string) => {
+  await pageFixture.page.locator('//input[contains(@placeholder, "Email")]').fill(email)
+});
+
+When('I type a specific text {string} and a number {int} within the comment input field', async (message: string, numberComment: number) => {
+  await pageFixture.page.getByPlaceholder('Comments').fill(`${message} ${numberComment}`)
+});
