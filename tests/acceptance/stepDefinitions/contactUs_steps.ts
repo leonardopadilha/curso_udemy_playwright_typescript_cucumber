@@ -71,3 +71,41 @@ When('I type a random last name', async () => {
 When('I enter a random email address', async () => {
   await pageFixture.page.locator('//input[contains(@placeholder, "Email")]').fill(user.email)
 });
+
+// Scenario Outline
+
+When('I type a  first name {word} and a last name {word}', async (firstName: string, lastName: string) => {
+  await pageFixture.page.locator('[placeholder="First Name"]').fill(firstName)
+  await pageFixture.page.locator('[placeholder="Last Name"]').fill(lastName)
+
+});
+
+When('I type an email address {string} and a comment {string}', async (email: string, comment: string) => {
+  await pageFixture.page.locator('//input[contains(@placeholder, "Email")]').fill(email)
+  await pageFixture.page.getByPlaceholder('Comments').fill(comment)
+
+});
+
+Then('I should be presented with header text {string}', async (message: string) => {
+  // wait for the target element
+  await pageFixture.page.waitForSelector('//h1 | //body', { state: 'visible' })
+
+  // get all elements
+  const elements = await pageFixture.page.locator('//h1 | //body').elementHandles()
+  let foundElementText = ''
+
+  // loop through each of the elements
+  for (let element of elements) {
+    // get the inner text of the element
+    let text = await element.innerText()
+
+    // if statement to check whether text includes expected text
+    if (text.includes(message)) {
+      foundElementText = text
+      break
+    }
+  }
+
+  // perform an assertion
+  expect(foundElementText).toContain(message)
+});
