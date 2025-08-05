@@ -12,6 +12,11 @@ When('I click on the contact us button', async () => {
   await pageFixture.page.locator("#contact-us h1").click()
 });
 
+When('I click on the login portal button', async () => {
+  const loginButton = pageFixture.page.getByRole('link', { name: "LOGIN PORTAL" })
+  await loginButton.click()
+})
+
 When('I switch to the new browser tab', async () => {
   await pageFixture.context.waitForEvent("page")
   

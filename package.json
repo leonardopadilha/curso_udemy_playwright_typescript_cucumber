@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "cucumberWithTS": "cucumber-js tests/acceptance/features/*.feature --require-module ts-node/register --require tests/acceptance/stepDefinitions/**/**/*.ts --require tests/acceptance/utils/cucumber-timeout.ts"
+    "cucumberWithTS": "cucumber-js tests/acceptance/features/*.feature --require-module ts-node/register --require tests/acceptance/stepDefinitions/**/**/*.ts --require tests/acceptance/utils/cucumber-timeout.ts",
+    "cucumberLoginTS": "cucumber-js tests/acceptance/features/login.feature --require-module ts-node/register --require tests/acceptance/stepDefinitions/**/**/*.ts --require tests/acceptance/utils/cucumber-timeout.ts"
   },
   "keywords": [],
   "author": "",
