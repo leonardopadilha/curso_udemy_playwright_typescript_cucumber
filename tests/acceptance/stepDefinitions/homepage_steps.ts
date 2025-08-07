@@ -16,19 +16,3 @@ When('I click on the login portal button', async () => {
   const loginButton = pageFixture.page.getByRole('link', { name: "LOGIN PORTAL" })
   await loginButton.click()
 })
-
-When('I switch to the new browser tab', async () => {
-  await pageFixture.context.waitForEvent("page")
-  
-  // Retrieve all current open pages (tabs)
-  const allPage = await pageFixture.context.pages()
-
-  // Assign the most recent tab to pageFixture.page
-  pageFixture.page = allPage[allPage.length - 1]
-
-  // Bring the newly assigned tab to the front (Make it active)
-  await pageFixture.page.bringToFront()
-
-  // Ensure the newly assigned tab is also fully maximized
-  await pageFixture.page.setViewportSize({ width: 1920, height: 1080 })
-})
