@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "cucumberWithTS": "cucumber-js tests/acceptance/features/*.feature --require-module ts-node/register --require tests/acceptance/stepDefinitions/**/**/*.ts --require tests/acceptance/utils/cucumber-timeout.ts",
-    "cucumberLoginTS": "cucumber-js tests/acceptance/features/login.feature --require-module ts-node/register --require tests/acceptance/stepDefinitions/**/**/*.ts --require tests/acceptance/utils/cucumber-timeout.ts"
+    "cucumberLoginTS": "cucumber-js tests/acceptance/features/login.feature --require-module ts-node/register --require tests/acceptance/stepDefinitions/**/**/*.ts --require tests/acceptance/utils/cucumber-timeout.ts",
+    "cucumber": "ts-node tests/acceptance/index.ts"
   },
   "keywords": [],
   "author": "",
@@ -16,5 +17,8 @@
     "@playwright/test": "^1.54.1",
     "@types/node": "^24.0.13",
     "ts-node": "^10.9.2"
+  },
+  "dependencies": {
+    "glob": "^11.0.3"
   }
 }
